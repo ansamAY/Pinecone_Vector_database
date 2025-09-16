@@ -1,6 +1,6 @@
-# 🖼️ Image & Text Semantic Search with Vector Database
+# Image & Text Semantic Search with Vector Database
 
-## 📌 Overview
+##  Overview
 
 This project demonstrates how to use **embeddings + vector databases**
 to enable **semantic search** for both text and images.\
@@ -14,7 +14,7 @@ We use:\
 
 ------------------------------------------------------------------------
 
-## 🚀 Workflow
+##  Workflow
 
 1.  **Input Data**: images, text, or video.\
 2.  **Embedding Model**: convert them into vector representations
@@ -33,7 +33,7 @@ We use:\
 
 ------------------------------------------------------------------------
 
-## 🔧 Tech Stack
+##  Tech Stack
 
 -   **Python 3.11+**
 -   [Transformers](https://huggingface.co/transformers/) (`CLIPModel`,
@@ -45,7 +45,7 @@ We use:\
 
 ------------------------------------------------------------------------
 
-## 📂 Project Structure
+##  Project Structure
 
     .
     ├── vector_search_text.py   # Semantic search using text embeddings
@@ -56,16 +56,16 @@ We use:\
 
 ------------------------------------------------------------------------
 
-## ⚡ Examples
+##  Examples
 
-### 🔎 Text Search
+###  Text Search
 
 ``` python
 query = "comfortable sneakers for sport"
 # Returns → "Red running shoes for men"
 ```
 
-### 🖼️ Image Search
+###  Image Search
 
 ``` python
 query_image = "new_dog.jpg"
@@ -74,7 +74,7 @@ query_image = "new_dog.jpg"
 
 ------------------------------------------------------------------------
 
-## 🌟 Embedding Models Examples
+##  Embedding Models Examples
 
 -   **Text**
     -   OpenAI `text-embedding-ada-002`\
@@ -87,7 +87,7 @@ query_image = "new_dog.jpg"
 
 ------------------------------------------------------------------------
 
-## ✅ Benefits
+##  Benefits
 
 -   Semantic (meaning-based) search.\
 -   Cross-modal search (text ↔ image).\
