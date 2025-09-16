@@ -9,7 +9,7 @@ model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
 
 # 2) Connect to Pinecone
-pc = Pinecone(api_key="pcsk_5AfaQ4_F7Yg8xTf7zMdhNApTrourR2HmumPEszHnf4f6k7EiCsNVuARA2YPKMaw4b1u8K4")
+pc = Pinecone(api_key="your_api")
 INDEX_NAME = "image-search"
 
 # 3) Create index if not exists

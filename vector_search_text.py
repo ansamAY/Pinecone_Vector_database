@@ -10,7 +10,7 @@ DIM = 384
 model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # 2) Pinecone client
-pc = Pinecone(api_key="pcsk_5AfaQ4_F7Yg8xTf7zMdhNApTrourR2HmumPEszHnf4f6k7EiCsNVuARA2YPKMaw4b1u8K4")
+pc = Pinecone(api_key="Your_API")
 
 # 3) Create index if not exists
 if INDEX_NAME not in [x["name"] for x in pc.list_indexes()]:
