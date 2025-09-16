@@ -1,0 +1,87 @@
+f index_name not in pc.list_indexes().names():
+    pc.create_index(name=index_name, dimension=1536, metric="cosine")
+
+index = pc.Index(index_name)
+
+# 2- Connect to OpenAI
+client = OpenAI(api_key="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")
+
+# 3- Example product catalog
+products = [
+    "Red running shoes for men",
+    "Elegant black dress for women",
+    "Wireless noise-cancelling headphones",
+    "Smartphone with high-resolution camera",
+    "Wooden dining table with 6 chairs",
+    "Laptop with long battery life",
+]
+
+# 4- Embed and upsert into Pinecone
+for i, product in enumerate(products):
+    emb = client.embeddings.create(
+        model="text-embedding-ada-002",
+        input=product
+    ).data[0].embedding
+    index.upsert([(f"prod-{i}", emb, {"description": product})])
+
+# 5- Search query
+query = "comfortable sneakers for sport”
+query_emb = client.embeddings.create(
+    model="text-embedding-ada-002",
+    input=query
+).data[0].embedding
+
+results = index.query(vector=query_emb, top_k=3, include_metadata=True)
+
+# 6- Print results
+print("🔍 Search Results for:", query)
+for match in results['matches']:
+    print(f"Score: {match['score']:.3f} | {match['metadata']['description']}")
+import pinecone
+from openai import OpenAI
+
+# 1- Connect to Pinecone
+pc = pinecone.Pinecone(api_key="pcsk_5AfaQ4_F7Yg8xTf7zMdhNApTrourR2HmumPEszHnf4f6k7EiCsNVuARA2YPKMaw4b1u8K4")
+index_name = "product-search"
+
+# Create index if it doesn't exist
+if index_name not in pc.list_indexes().names():
+    pc.create_index(name=index_name, dimension=1536, metric="cosine")
+
+index = pc.Index(index_name)
+
+# 2- Connect to OpenAI
+client = OpenAI(api_key="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")
+
+# 3- Example product catalog
+products = [
+    "Red running shoes for men",
+    "Elegant black dress for women",
+    "Wireless noise-cancelling headphones",
+    "Smartphone with high-resolution camera",
+    "Wooden dining table with 6 chairs",
+    "Laptop with long battery life",
+]
+
+# 4- Embed and upsert into Pinecone
+for i, product in enumerate(products):
+    emb = client.embeddings.create(
+        model="text-embedding-ada-002",
+        input=product
+    ).data[0].embedding
+    index.upsert([(f"prod-{i}", emb, {"description": product})])
+
+# 5- Search query
+query = "comfortable sneakers for sport”
+query_emb = client.embeddings.create(
+    model="text-embedding-ada-002",
+    input=query
+).data[0].embedding
+
+results = index.query(vector=query_emb, top_k=3, include_metadata=True)
+
+# 6- Print results
+print("🔍 Search Results for:", query)
+for match in results['matches']:
+    print(f"Score: {match['score']:.3f} | {match['metadata']['description']}")
+
